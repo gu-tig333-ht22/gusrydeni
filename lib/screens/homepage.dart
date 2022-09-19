@@ -1,51 +1,59 @@
 import 'package:flutter/material.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
-
+class HomePage extends StatefulWidget {
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Att göra",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-          ),
-        ),
-        backgroundColor: Color.fromARGB(255, 178, 160, 100),
+        title: Text("TIG333 ToDo"),
         actions: [
-          Icon(Icons.more_vert),
+          _popupMenuButton(),
         ],
-        elevation: 15,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text("Hej"),
-          ],
-        ),
+
+      body: Text("Hej"),
+      
+      floatingActionButton: FloatingActionButton(
+        tooltip: "Add new ToDo!",
+        backgroundColor: Color.fromARGB(255, 196, 196, 196),
+        child: Icon(Icons.create),
+        onPressed: () async {
+          Navigator.pushNamed(context, "/NewToDoView");
+        },
       ),
     );
   }
 }
 
-Widget newtodobutton() {
-  return Container(
-    child: Center(
-      child: IconButton(
-        icon: const Icon(Icons.create),
-        tooltip: "Skapa ny att göra",
-        onPressed: () {},
+Widget _popupMenuButton() {
+  return PopupMenuButton(itemBuilder: (context) {
+    return [
+      PopupMenuItem<int>(
+        value: 0,
+        child: Text("All"),
       ),
-    ),
-  );
-}
+      PopupMenuItem<int>(
+        value: 1,
+        child: Text("Done"),
+      ),
+      PopupMenuItem<int>(
+        value: 2,
+        child: Text("Undone"),
+      ),
+    ];
+    
+  }, onSelected: (value) {
+    if (value == 0) {
+      print("All is selected.");
+    } else if (value == 1) {
+      print("Done is selected.");
+    } else if (value == 2) {
+      print("Undone is selected.");
+    }
+  },
+);}
