@@ -18,24 +18,28 @@ class ToDoItem extends StatelessWidget {
         side: BorderSide(color: Colors.black, width: 1),
       ),
       leading: Checkbox(
-        value: todo.checked,
-        onChanged: (bool? checked) {
-          Provider.of<ToDoListState>(context, listen: false)
-              .handleToDoChanged(todo);
-        },
-
-        fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
-            return Color.fromARGB(255, 0, 0, 0).withOpacity(.32);
-          }
-          return Color.fromARGB(255, 0, 0, 0);
-          })
-      ),
-      title: todo.checked == false ? Text(todo.text): Text(todo.text, style: TextStyle(decoration: TextDecoration.lineThrough),),
+          value: todo.checked,
+          onChanged: (bool? checked) {
+            Provider.of<ToDoListState>(context, listen: false)
+                .updateToDo(todo);
+          },
+          fillColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return Color.fromARGB(255, 0, 0, 0).withOpacity(.32);
+            }
+            return Color.fromARGB(255, 0, 0, 0);
+          })),
+      title: todo.checked == false
+          ? Text(todo.text)
+          : Text(
+              todo.text,
+              style: TextStyle(decoration: TextDecoration.lineThrough),
+            ),
       trailing: IconButton(
         icon: Icon(Icons.delete_rounded),
         onPressed: () {
-          Provider.of<ToDoListState>(context, listen: false).deleteToDo(todo);
+          Provider.of<ToDoListState>(context, listen: false).removeToDo(todo);
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:template/models/ToDo.dart';
+import 'package:template/provider/API.dart';
 import 'package:template/provider/ToDoListState.dart';
 
 //ny skärm för när man vill skapa en ny ToDo
@@ -24,9 +25,7 @@ class _NewToDoViewState extends State<NewToDoView> {
   void addnewtodo() {
     final String newtext = ToDoTextController.text;
     if (newtext.isNotEmpty) {
-      final ToDo todo = ToDo(text: newtext);
-
-      Provider.of<ToDoListState>(context, listen: false).addToList(todo);
+      Provider.of<ToDoListState>(context, listen: false).addToDo(newtext);
       Navigator.pop(context, "/");
     }
   }
