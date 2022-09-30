@@ -8,7 +8,7 @@ String apiKey = "9f3bee59-1bdc-4f76-a96d-52b9046a194d";
 
 class API {
   static Future<List> fetchlist() async {
-    http.Response response = await http.get(Uri.parse("https://todoapp-api.apps.k8s.gu.se/todos?key=[$apiKey]"));
+    http.Response response = await http.get(Uri.parse("https://todoapp-api.apps.k8s.gu.se/todos?key=$apiKey"));
     return jsonDecode(response.body);
   }
 
