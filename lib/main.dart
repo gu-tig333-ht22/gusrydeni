@@ -6,7 +6,13 @@ import 'package:template/screens/HomePage/HomePage.dart';
 
 
 void main() {
-  runApp(const ToDoApp());
+  var state = ToDoListState();
+  state.fetchToDos();
+
+  runApp(ChangeNotifierProvider(
+      create: (context) => ToDoListState(),
+      child: ToDoApp()
+  ));
 }
 
 class ToDoApp extends StatelessWidget {
@@ -14,9 +20,7 @@ class ToDoApp extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ToDoListState(),
-      builder: ((context, child) => MaterialApp(
+    return MaterialApp(
         title: "ToDo App",
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
@@ -44,7 +48,6 @@ class ToDoApp extends StatelessWidget {
 
               ),
             ),
-      ))
      );
   }
 }

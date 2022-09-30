@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template/screens/HomePage/Views/DoneToDos.dart';
-import 'package:template/screens/HomePage/Views/UndoneToDos.dart';
-import 'Views/AllTodos.dart';
+import 'filter.dart';
 
 //hemskärm med ToDo lista
 
@@ -26,6 +24,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: selectedItem,
+      
       floatingActionButton: FloatingActionButton(
         tooltip: "Add new ToDo!",
         backgroundColor: Color.fromARGB(255, 196, 196, 196),
