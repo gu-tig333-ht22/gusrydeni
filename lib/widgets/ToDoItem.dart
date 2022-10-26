@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template/provider/ToDoListState.dart';
-import '../models/ToDo.dart';
+import 'package:template/Model/ToDoListState.dart';
+import '../Model/ToDo.dart';
 
 //Widgeten för hur en ToDo ska se ut i UI
 

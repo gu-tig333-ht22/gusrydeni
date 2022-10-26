@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template/provider/ToDoListState.dart';
+import 'package:template/Model/ToDoListState.dart';
 import 'package:template/screens/NewToDoView.dart';
-import 'package:template/screens/HomePage/HomePage.dart';
+import 'package:template/screens/HomePage.dart';
 
 
 void main() {

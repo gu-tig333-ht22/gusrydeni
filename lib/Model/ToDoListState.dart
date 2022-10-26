@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:template/models/ToDo.dart';
+import 'package:template/Model/ToDo.dart';
 import 'dart:collection';
-import 'package:template/provider/API.dart';
+
+import 'API.dart';
 
 //state för att hantera interaktion i UI
 
 class ToDoListState extends ChangeNotifier {
   List<ToDo> _ToDoList = [];
+  String filter = "All";
 
   ToDoListState() {
     fetchToDos();
   }
 
-  UnmodifiableListView<ToDo> get allToDos =>
-      UnmodifiableListView(_ToDoList.reversed);
-  UnmodifiableListView<ToDo> get undoneToDos =>
-      UnmodifiableListView((_ToDoList.reversed).where((todo) => !todo.checked));
-  UnmodifiableListView<ToDo> get doneToDos =>
-      UnmodifiableListView((_ToDoList.reversed).where((todo) => todo.checked));
+  UnmodifiableListView<ToDo> get ToDoList => UnmodifiableListView(_ToDoList.reversed);
+
+  void setFilter(popUpMenuValue) {
+    filter = popUpMenuValue;
+    notifyListeners();
+  }
 
   fetchToDos() async {
     List rawList = await API.fetchlist();

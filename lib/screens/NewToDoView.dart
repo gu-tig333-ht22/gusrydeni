@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template/models/ToDo.dart';
-import 'package:template/provider/API.dart';
-import 'package:template/provider/ToDoListState.dart';
+import 'package:template/Model/ToDo.dart';
+import 'package:template/Model/ToDoListState.dart';
 
 //ny skärm för när man vill skapa en ny ToDo
 
